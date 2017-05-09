@@ -28,6 +28,7 @@ class ApplicationController < Sinatra::Base
       erb :login
     else
       redirect to '/events'
+    end
   end
 
 end

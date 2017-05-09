@@ -20,7 +20,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    'hello world'
+    erb :home
+  end
+
+  get '/login' do
+    if !logged_in?
+      erb :login
+    else
+      redirect to '/events'
   end
 
 end

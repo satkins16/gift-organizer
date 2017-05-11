@@ -1,0 +1,6 @@
+<h1><%= "#{@user.name}'s Events" %><h1>
+
+<a href="/events/new">Create New Event</a>
+<% @events.each do |event| %>
+  <ul><%= event.name %>    <%= event.date %></ul>
+<% end %>

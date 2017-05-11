@@ -13,4 +13,16 @@ class EventsController < ApplicationController
     erb :'events/new'
   end
 
+  post '/events/new' do
+    redirect_if_not_logged_in
+    if params[:name] != "" && params[:date] != ""
+      @user = current_user
+      @event = Event.create(name: params[:name], date: params[:date])
+      @user.events << @event
+      redirect to "/events/#{@event.id}"
+    else
+      redirect to '/events/new'
+    end
+  end
+
 end

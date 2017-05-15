@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   get '/events' do
     redirect_if_not_logged_in
     @user = current_user
-    @events = User.events
+    @events = @user.events
     erb :'events/events'
   end
 

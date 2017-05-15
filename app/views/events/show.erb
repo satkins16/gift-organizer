@@ -1,5 +1,9 @@
 <h1><%= @event.name %></h1>
 <h3><%= @event.date %></h3>
 
-<a href="/events/<= @event.id %>/delete">Delete Event</a><br>
+
+<form method="post" action="/events/<%= @event.id %>/delete">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Event">
+</form>
 <a href="/events">All Events</a>

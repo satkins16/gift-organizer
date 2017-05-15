@@ -2,5 +2,7 @@
 
 <a href="/events/new">Create New Event</a>
 <% @events.each do |event| %>
-  <ul><%= event.name %>    <%= event.date %></ul>
+  <ul>
+    <li><a href="/events/<%= event.id %>"><%= event.name %>    <%= event.date %></a></li>
+  </ul>
 <% end %>

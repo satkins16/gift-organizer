@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     end
   end
 
-  delete '/events/:id/delete' do
+  get '/events/:id/delete' do
     redirect_if_not_logged_in
     @event = Event.find_by_id(params[:id])
     if @event.user_id == session[:user_id]

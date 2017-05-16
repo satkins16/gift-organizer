@@ -36,6 +36,7 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     if @event.user_id == session[:user_id]
       @event.delete
+      redirect to '/events'
     else
       redirect to '/events'
     end

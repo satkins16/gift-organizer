@@ -69,4 +69,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/logout' do
+    redirect_if_not_logged_in
+    session.destroy
+    redirect to '/'
+  end
+
 end

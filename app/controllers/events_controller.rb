@@ -19,6 +19,13 @@ class EventsController < ApplicationController
     erb :'events/show'
   end
 
+  get '/events/:id/gifts/new' do
+    redirect_if_not_logged_in
+    @event = Event.find_by_id(params[:id])
+    @givers = Giver.all
+    erb :'gifts/new'
+  end
+
   post '/events/new' do
     redirect_if_not_logged_in
     if params[:name] != "" && params[:date] != ""

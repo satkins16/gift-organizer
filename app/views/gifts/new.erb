@@ -2,9 +2,17 @@
 
 <form method="post" action="/gifts/new">
   <label>Name</label>
-  <input type="text" id="name" name="name">
-  <label>Gift Giver(s)</label>
-    <% @givers.each do |giver| %>
-      <option value="<%= giver.id %>"><%= giver.name %></option>
-    <% end %>
-    
+  <input type="text" id="name" name="name"><br><br>
+  <% if @givers %>
+    <label>Select Gift Giver(s)</label>
+      <% @givers.each do |giver| %>
+        <option value="<%= giver.id %>"><%= giver.name %></option>
+      <% end %><br>
+    <label>And/Or Create New Gift Giver</label>
+    <input type="text" id="giver" name="or_giver">
+    <input type="submit" value="Submit">
+  <% else %>
+    <label>Create New Gift Giver</label>
+    <input type="text" id="giver" name="new_giver"><br><br>
+    <input type="submit" value="Submit">
+  <% end %>

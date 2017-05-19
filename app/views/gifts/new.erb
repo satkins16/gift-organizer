@@ -1,6 +1,6 @@
 <h1>Create New Gift</h1>
 
-<form method="post" action="/gifts/new">
+<form method="post" action="events/<%= @event.id %>/gifts/new">
   <label>Name</label>
   <input type="text" id="name" name="name"><br><br>
   <% if @givers %>

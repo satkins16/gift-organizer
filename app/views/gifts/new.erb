@@ -1,18 +1,16 @@
 <h1>Create New Gift</h1>
 
-<form method="post" action="events/<%= @event.id %>/gifts/new">
+<form method="post" action="/events/<%= @event.id %>/gifts/new">
   <label>Name</label>
-  <input type="text" id="name" name="name"><br><br>
-  <% if @givers %>
-    <label>Select Gift Giver(s)</label>
-      <% @givers.each do |giver| %>
-        <option value="<%= giver.id %>"><%= giver.name %></option>
-      <% end %><br>
+  <input type="text" id="name" name="gift[name]"><br><br><br>
+
+    <label>Select Gift Giver(s):</label><br><br>
+      <% if @givers %>
+        <% @givers.each do |giver| %>
+          <input type="checkbox" name="gift[giver_ids][]" id="<%= giver.name %>" value="<%= giver.id %>"><%= giver.name %></input>
+          <% end %>
+      <% end %><br><br><br>
     <label>And/Or Create New Gift Giver</label>
-    <input type="text" id="giver" name="or_giver">
+    <input type="text" id="giver" name="giver[name]"><br><br>
     <input type="submit" value="Submit">
-  <% else %>
-    <label>Create New Gift Giver</label>
-    <input type="text" id="giver" name="new_giver"><br><br>
-    <input type="submit" value="Submit">
-  <% end %>
+</form>

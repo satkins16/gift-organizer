@@ -41,12 +41,14 @@ class EventsController < ApplicationController
   post '/events/:id/gifts/new' do
     redirect_if_not_logged_in
     @event = Event.find_by_id(params[:id])
-    @gift = Gift.create(name: params[:id])
-    if params[:new_giver] != ""
-      @giver = Giver.create(name: params[:new_giver])
-      @event.gifts << @gift
-      @gift.givers << @giver
+    @gift = Gift.create(params[:gift])
+    @event.gifts << @gift
+    if !params[:giver][:name].empty?
+      @gift.givers << Giver.create(name: params[:giver][:name])
     end
+    @event.save
+    @gift.save
+    redirect to "/events/#{@event.id}"
   end
 
   get '/events/:id/delete' do

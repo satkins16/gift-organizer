@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   get '/events/:id' do
     redirect_if_not_logged_in
     @event = Event.find_by_id(params[:id])
+    @gifts = @event.gifts
     erb :'events/show'
   end
 

@@ -5,3 +5,10 @@
 <a href="/events">All Events</a><br>
 <a href="/events/<%= @event.id %>/delete">Delete Event</a><br><br>
 <a href="/events/<%= @event.id %>/gifts/new">Create New Gift</a>
+
+<h2>Gifts</h2>
+<% @gifts.each do |gift| %>
+  <ul>
+    <li><%= gift.name %></li>
+  </ul>
+<% end %>

@@ -1,4 +1,4 @@
 # gift-organizer
 
-next: givers on each gift in events respective show pages
-then: checkmarks
+next: edit gifts
+then: view individual givers gifts

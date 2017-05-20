@@ -9,6 +9,11 @@
 <h2>Gifts</h2>
 <% @gifts.each do |gift| %>
   <ul>
-    <input type="checkbox"> <%= gift.name %>
+    <li><%= gift.name %></li>
+    <ul>
+      <% gift.givers.each do |giver| %>
+        <input type="checkbox"><%= giver.name %><br>
+      <% end %>
+    </ul><br>
   </ul>
 <% end %>

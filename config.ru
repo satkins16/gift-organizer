@@ -6,5 +6,4 @@ end
 
 use Rack::MethodOverride
 use EventsController
-use GiftsController
 run ApplicationController

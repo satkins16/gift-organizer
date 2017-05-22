@@ -31,6 +31,7 @@ class EventsController < ApplicationController
     redirect_if_not_logged_in
     @event = Event.find_by_id(params[:id])
     @gift = Gift.find_by_id(params[:id2])
+    @givers = Giver.all
     erb :'gifts/edit'
   end
 
@@ -57,6 +58,12 @@ class EventsController < ApplicationController
     @event.save
     @gift.save
     redirect to "/events/#{@event.id}"
+  end
+
+  post '/events/:id/gifts/:id2/edit' do
+    redirect_if_not_logged_in
+    @event = Event.find_by_id(params[:id])
+    @gift = Gift.find_by_id(params[:id])
   end
 
   get '/events/:id/delete' do

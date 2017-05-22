@@ -1,0 +1,16 @@
+<h1>Edit <%= @gift.name %></h1>
+
+<form method="post" action="/events/<%= @event.id %>/gifts/<%= @gift.id %>/edit">
+  <label>Name</label>
+  <input type="text" id="name" name="gift[name]" value="<%= @gift.name %>"><br><br><br>
+
+    <label>Select Gift Giver(s):</label><br><br>
+      <% if @givers %>
+        <% @givers.each do |giver| %>
+          <input type="checkbox" name="gift[giver_ids][]" id="<%= giver.name %>" value="<%= giver.id %>" <%= 'checked' if @gift.givers.include?(giver) %>><%= giver.name %></input>
+          <% end %>
+      <% end %><br><br><br>
+    <label>And/Or Create New Gift Giver</label>
+    <input type="text" id="giver" name="giver[name]"><br><br>
+    <input type="submit" value="Submit">
+</form>

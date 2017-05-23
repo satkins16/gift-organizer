@@ -27,6 +27,12 @@ class EventsController < ApplicationController
     erb :'gifts/new'
   end
 
+  get '/events/:id/edit' do
+    redirect_if_not_logged_in
+    @event = Event.find_by_id(params[:id])
+    erb :'events/edit'
+  end
+
   get '/events/:id/gifts/:id2/edit' do
     redirect_if_not_logged_in
     @event = Event.find_by_id(params[:id])
@@ -58,6 +64,15 @@ class EventsController < ApplicationController
     end
     @event.save
     @gift.save
+    redirect to "/events/#{@event.id}"
+  end
+
+  post '/events/:id/edit' do
+    redirect_if_not_logged_in
+    @event = Event.find_by_id(params[:id])
+    @event.name = params[:name]
+    @event.date = params[:date]
+    @event.save
     redirect to "/events/#{@event.id}"
   end
 

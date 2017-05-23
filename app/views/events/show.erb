@@ -2,6 +2,7 @@
 <h3>Date of Event: <%= @event.date %></h3>
 
 <a href="/logout">Log Out</a><br>
+<a href="/events/<%= @event.id %>/edit">Edit Event</a><br>
 <a href="/events">All Events</a><br>
 <a href="/events/<%= @event.id %>/delete">Delete Event</a><br><br>
 <a href="/events/<%= @event.id %>/gifts/new">Create New Gift</a>

@@ -1,5 +1,5 @@
 <h1><%= @event.name %></h1>
-<h3><%= @event.date %></h3>
+<h3>Date of Event: <%= @event.date %></h3>
 
 <a href="/logout">Log Out</a><br>
 <a href="/events">All Events</a><br>
@@ -9,7 +9,7 @@
 <h2>Gifts</h2>
 <% @gifts.each do |gift| %>
   <ul>
-    <li><%= gift.name %> (<a href="/events/<%= @event.id %>/gifts/<%= gift.id %>/edit">edit</a>)</li>
+    <li><%= gift.name %> (<a href="/events/<%= @event.id %>/gifts/<%= gift.id %>/edit">edit</a>) (<a href="/gifts/<%= gift.id %>/delete">delete</a>)</li>
     <ul>
       <% gift.givers.each do |giver| %>
         <input type="checkbox"><%= giver.name %><br>

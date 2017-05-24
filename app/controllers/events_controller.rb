@@ -55,12 +55,16 @@ class EventsController < ApplicationController
 
   post '/events/:id/gifts/new' do
     redirect_if_not_logged_in
+    @user = current_user
     @event = Event.find_by_id(params[:id])
     @gift = Gift.create(params[:gift])
     @event.gifts << @gift
+    @user.gifts << @gift
     @gift.event = @event
     if !params[:giver][:name].empty?
-      @gift.givers << Giver.create(name: params[:giver][:name])
+      @giver = Giver.create(name: params[:giver][:name])
+      @gift.givers << @giver
+      @user.givers << @giver
     end
     @event.save
     @gift.save
@@ -82,7 +86,9 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     @gift.update(params[:gift])
     if !params[:giver][:name].empty?
-      @gift.givers << Giver.create(name: params[:giver][:name])
+      @giver = Giver.create(name: params[:giver][:name])
+      @gift.givers << @giver
+      @user.givers << @giver
     end
     @gift.save
     redirect to "/events/#{@event.id}"

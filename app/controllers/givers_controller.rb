@@ -3,7 +3,7 @@ class GiversController < ApplicationController
   get '/givers' do
     redirect_if_not_logged_in
     @user = current_user
-    @gifts = @user.gifts
+    @givers = @user.givers
     erb :'givers/givers'
   end
 

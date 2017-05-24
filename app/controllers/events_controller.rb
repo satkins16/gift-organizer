@@ -82,6 +82,7 @@ class EventsController < ApplicationController
 
   post '/events/:id/gifts/:id2/edit' do
     redirect_if_not_logged_in
+    @user = current_user
     @gift = Gift.find_by_id(params[:id2])
     @event = Event.find_by_id(params[:id])
     @gift.update(params[:gift])

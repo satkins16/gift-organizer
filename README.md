@@ -1,6 +1,5 @@
 # gift-organizer
 
-then: edit events
 then: view individual givers gifts
 
 

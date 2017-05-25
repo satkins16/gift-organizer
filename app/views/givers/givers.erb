@@ -2,6 +2,6 @@
 
 <% @givers.each do |giver| %>
   <ul>
-    <li><%= giver.name %></li>
+    <li><a href="/givers/<%= giver.id %>"><%= giver.name %></a> (<a href="/givers/<%= giver.id %>/delete">delete</a>)</li>
   </ul>
 <% end %>

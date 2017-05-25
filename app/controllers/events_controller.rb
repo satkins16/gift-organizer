@@ -60,7 +60,6 @@ class EventsController < ApplicationController
     @gift = Gift.create(params[:gift])
     @event.gifts << @gift
     @user.gifts << @gift
-    @gift.event = @event
     if !params[:giver][:name].empty?
       @giver = Giver.create(name: params[:giver][:name])
       @gift.givers << @giver
@@ -68,6 +67,8 @@ class EventsController < ApplicationController
     end
     @event.save
     @gift.save
+    @giver.save
+    @event.save
     redirect to "/events/#{@event.id}"
   end
 

@@ -1,5 +1,8 @@
 <h1>All Gift Givers</h1>
 
+<a href="/logout">Log Out</a><br>
+<a href="/events">All Events</a><br>
+
 <% @givers.each do |giver| %>
   <ul>
     <li><a href="/givers/<%= giver.id %>"><%= giver.name %></a> (<a href="/givers/<%= giver.id %>/delete">delete</a>)</li>

@@ -9,7 +9,9 @@ class GiversController < ApplicationController
 
   get '/givers/:id' do
     redirect_if_not_logged_in
-
+    @giver = Giver.find_by_id(params[:id])
+    @gifts = @giver.gifts
+    erb :'givers/show'
   end
 
   get '/givers/:id/delete' do

@@ -1,0 +1,9 @@
+<h1><%= @giver.name %>'s Gifts</h1>
+
+<a href="/givers">All Gift Givers</a>
+
+<% @gifts.each do |gift| %>
+  <ul>
+    <li><%= gift.name %></li>
+  </ul>
+<% end %>

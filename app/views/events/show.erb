@@ -13,7 +13,7 @@
     <li><%= gift.name %> (<a href="/events/<%= @event.id %>/gifts/<%= gift.id %>/edit">edit</a>) (<a href="/gifts/<%= gift.id %>/delete">delete</a>)</li>
     <ul>
       <% gift.givers.each do |giver| %>
-        <input type="checkbox"><%= giver.name %><br>
+        <input type="checkbox"><a href="/givers/<%= giver.id %>"><%= giver.name %></a><br>
       <% end %>
     </ul><br>
   </ul>

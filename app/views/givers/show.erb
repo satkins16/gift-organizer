@@ -4,6 +4,6 @@
 
 <% @gifts.each do |gift| %>
   <ul>
-    <li><%= gift.name %></li>
+    <li><%= gift.name %> (<a href="/events/<%= gift.event.id %>"><%= gift.event.name %></a> <%= gift.event.date %>)</li>
   </ul>
 <% end %>

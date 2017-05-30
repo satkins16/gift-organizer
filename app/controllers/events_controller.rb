@@ -22,8 +22,9 @@ class EventsController < ApplicationController
 
   get '/events/:id/gifts/new' do
     redirect_if_not_logged_in
+    @user = current_user
     @event = Event.find_by_id(params[:id])
-    @givers = Giver.all
+    @givers = @user.givers
     erb :'gifts/new'
   end
 
@@ -35,9 +36,10 @@ class EventsController < ApplicationController
 
   get '/events/:id/gifts/:id2/edit' do
     redirect_if_not_logged_in
+    @user = current_user
     @event = Event.find_by_id(params[:id])
     @gift = Gift.find_by_id(params[:id2])
-    @givers = Giver.all
+    @givers = @user.givers
     erb :'gifts/edit'
   end
 
@@ -100,6 +102,10 @@ class EventsController < ApplicationController
     redirect_if_not_logged_in
     @event = Event.find_by_id(params[:id])
     if @event.user_id == session[:user_id]
+      @gifts = @event.gifts
+      @gifts.each do |gift|
+        gift.delete
+      end
       @event.delete
       redirect to '/events'
     else

@@ -1,9 +1,14 @@
 <h1><%= @giver.name %>'s Gifts</h1>
 
-<a href="/givers">All Gift Givers</a>
+<a href="/events">All Events</a><br>
+<a href="/givers">All Gift Givers</a><br>
+<a href="/logout">Log Out</a><br><br>
 
-<% @gifts.each do |gift| %>
-  <ul>
-    <li><%= gift.name %> (<a href="/events/<%= gift.event.id %>"><%= gift.event.name %></a> <%= gift.event.date %>)</li>
-  </ul>
+
+<% if !@gifts.empty? %>
+  <% @gifts.each do |gift| %>
+    <ul>
+      <li><%= gift.name %> (<a href="/events/<%= gift.event.id %>"><%= gift.event.name %></a> <%= gift.event.date %>)</li>
+    </ul>
+  <% end %>
 <% end %>

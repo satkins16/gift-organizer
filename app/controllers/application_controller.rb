@@ -1,9 +1,11 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
   configure do
     enable :sessions
+    use Rack::Flash
     set :session_secret, "gifts"
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -55,12 +57,14 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect to '/events'
     else
+      flash[:error] = "Email or password is incorrect"
       redirect to '/login'
     end
   end
 
   post '/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password] == ""
+      flash[:error] = "Please fill out all fields"
       redirect to '/signup'
     else
       @user = User.create(name: params[:name], email: params[:email], password: params[:password])

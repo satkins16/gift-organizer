@@ -1,6 +1,20 @@
-# gift-organizer
+#Gift Organizer
 
-then: details should only be respective to each user IN gift/new (should fix other) giver/show
+Create a user account. Create an event. Populate event with gifts. Check off gift givers after sending thank you notes.
 
+##Installation
+To use this code, you should first copy it to your computer via
 
-NEW IDEA: On new gifts, remove checkboxes. Instead, "Add" button that redirects right back into edit that specific gift. "Submit" button finishes and redirects back to events.
+    git clone https://github.com/satkins16/gift-organizer
+
+##Usage
+
+To use this app, just clone, run bundle install and then run shotgun.
+
+##License
+
+Everything in this repo is MIT License unless otherwise specified. Open license.txt to view license.
+
+##Contributing
+
+To contribute to Gift Organizer, open contributing.md for instructions.
